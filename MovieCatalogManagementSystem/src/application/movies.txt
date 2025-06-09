@@ -1,0 +1,49 @@
+Title: The Shawshank Redemption
+Description: Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.
+Release Year: 1994
+Rating: 9.3
+
+Title: The Godfather
+Description: The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.
+Release Year: 1972
+Rating: 9.2
+
+Title: The Dark Knight
+Description: When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.
+Release Year: 2008
+Rating: 9.0
+
+Title: Pulp Fiction
+Description: The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.
+Release Year: 1994
+Rating: 8.9
+
+Title: Forrest Gump
+Description: The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold from the perspective of an Alabama man.
+Release Year: 1994
+Rating: 8.8
+
+Title: Inception
+Description: A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea.
+Release Year: 2010
+Rating: 8.8
+
+Title: The Matrix
+Description: A computer programmer is led to fight an underground war against powerful computers who have constructed his entire reality with a system called the Matrix.
+Release Year: 1999
+Rating: 8.7
+
+Title: Goodfellas
+Description: The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners.
+Release Year: 1990
+Rating: 8.7
+
+Title: Interstellar
+Description: A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.
+Release Year: 2014
+Rating: 8.6
+
+Title: Parasite
+Description: A poor family schemes to become employed by a wealthy family and infiltrate their household by posing as unrelated, highly qualified individuals.
+Release Year: 2019
+Rating: 8.6

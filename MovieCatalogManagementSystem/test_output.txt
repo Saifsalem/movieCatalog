@@ -1,0 +1,29 @@
+Title: The Matrix
+Description: A computer programmer discovers reality is a simulation
+Release Year: 1999
+Rating: 8.7
+
+Title: The Dark Knight
+Description: Batman faces the Joker
+Release Year: 2008
+Rating: 9.0
+
+Title: Inception
+Description: A thief who steals through dream-sharing technology
+Release Year: 2010
+Rating: 8.7
+
+Title: Pulp Fiction
+Description: The lives of two mob hitmen intertwine
+Release Year: 1994
+Rating: 8.9
+
+Title: Forrest Gump
+Description: The story of an Alabama man through historical events
+Release Year: 1994
+Rating: 8.8
+
+Title: The Godfather
+Description: The aging patriarch of an organized crime dynasty
+Release Year: 1972
+Rating: 9.2

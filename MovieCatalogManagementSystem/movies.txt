@@ -1,0 +1,25 @@
+Title: The Lord of the Rings
+Description: Epic fantasy adventure
+Release Year: 2001
+Rating: 8.8
+
+Title: The Dark Knight
+Description: Batman faces the Joker
+Release Year: 2008
+Rating: 9.0
+
+Title: The Godfather
+Description: Aging patriarch of crime dynasty
+Release Year: 1972
+Rating: 9.2
+
+Title: Forrest Gump
+Description: Life of a simple man
+Release Year: 1994
+Rating: 8.8
+
+Title: The Shawshank Redemption
+Description: Two imprisoned men bond over years
+Release Year: 1994
+Rating: 9.3
+
