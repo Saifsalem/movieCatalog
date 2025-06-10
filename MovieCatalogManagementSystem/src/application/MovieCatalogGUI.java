@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
+import java.time.LocalDate;
 import java.time.Year;
 
 public class MovieCatalogGUI extends Application {
@@ -228,8 +229,10 @@ public class MovieCatalogGUI extends Application {
         descField.setPrefRowCount(3);
         descField.setStyle("-fx-border-color: #6a4c93;");
         
-        Spinner<Integer> yearSpinner = new Spinner<>(1900, Year.now().getValue(), Year.now().getValue());
-        yearSpinner.setStyle("-fx-border-color: #6a4c93;");
+        DatePicker yearPicker = new DatePicker();
+        yearPicker.setValue(LocalDate.now());
+        yearPicker.setPromptText("Select Release Date");
+        yearPicker.setStyle("-fx-border-color: #6a4c93;");
         
         Spinner<Double> ratingSpinner = new Spinner<>(0.0, 10.0, 5.0, 0.1);
         ratingSpinner.setStyle("-fx-border-color: #6a4c93;");
@@ -238,8 +241,8 @@ public class MovieCatalogGUI extends Application {
         grid.add(titleField, 1, 0);
         grid.add(new Label("Description:"), 0, 1);
         grid.add(descField, 1, 1);
-        grid.add(new Label("Release Year:"), 0, 2);
-        grid.add(yearSpinner, 1, 2);
+        grid.add(new Label("Release Date:"), 0, 2);
+        grid.add(yearPicker, 1, 2);
         grid.add(new Label("Rating:"), 0, 3);
         grid.add(ratingSpinner, 1, 3);
         
@@ -254,8 +257,9 @@ public class MovieCatalogGUI extends Application {
         
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == addButtonType) {
+                int releaseYear = yearPicker.getValue() != null ? yearPicker.getValue().getYear() : Year.now().getValue();
                 return new Movie(titleField.getText(), descField.getText(), 
-                               yearSpinner.getValue(), ratingSpinner.getValue());
+                               releaseYear, ratingSpinner.getValue());
             }
             return null;
         });
@@ -291,8 +295,9 @@ public class MovieCatalogGUI extends Application {
         descField.setPrefRowCount(3);
         descField.setStyle("-fx-border-color: #6a4c93;");
         
-        Spinner<Integer> yearSpinner = new Spinner<>(1900, Year.now().getValue(), selectedMovie.getReleaseYear());
-        yearSpinner.setStyle("-fx-border-color: #6a4c93;");
+        DatePicker yearPicker = new DatePicker();
+        yearPicker.setValue(LocalDate.of(selectedMovie.getReleaseYear(), 1, 1));
+        yearPicker.setStyle("-fx-border-color: #6a4c93;");
         
         Spinner<Double> ratingSpinner = new Spinner<>(0.0, 10.0, selectedMovie.getRating(), 0.1);
         ratingSpinner.setStyle("-fx-border-color: #6a4c93;");
@@ -301,8 +306,8 @@ public class MovieCatalogGUI extends Application {
         grid.add(titleField, 1, 0);
         grid.add(new Label("Description:"), 0, 1);
         grid.add(descField, 1, 1);
-        grid.add(new Label("Release Year:"), 0, 2);
-        grid.add(yearSpinner, 1, 2);
+        grid.add(new Label("Release Date:"), 0, 2);
+        grid.add(yearPicker, 1, 2);
         grid.add(new Label("Rating:"), 0, 3);
         grid.add(ratingSpinner, 1, 3);
         
@@ -316,8 +321,9 @@ public class MovieCatalogGUI extends Application {
         
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == updateButtonType) {
+                int releaseYear = yearPicker.getValue() != null ? yearPicker.getValue().getYear() : selectedMovie.getReleaseYear();
                 return new Movie(titleField.getText(), descField.getText(), 
-                               yearSpinner.getValue(), ratingSpinner.getValue());
+                               releaseYear, ratingSpinner.getValue());
             }
             return null;
         });
