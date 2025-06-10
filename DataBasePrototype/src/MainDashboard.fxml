@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="ModernProjectManagementController">
+	<top>
+		<!-- Header Section -->
+		<VBox
+			style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%); -fx-padding: 20;">
+			<Label text="Project Management System"
+				style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" />
+			<Label text="Comprehensive Business Management Solution"
+				style="-fx-text-fill: #e8e8e8; -fx-font-size: 14px;" />
+		</VBox>
+	</top>
+
+	<left>
+		<!-- Navigation Sidebar -->
+		<VBox prefWidth="280.0"
+			style="-fx-background-color: #2c3e50; -fx-padding: 15;">
+			<Label text="Navigation"
+				style="-fx-text-fill: #ecf0f1; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 0 0 15 0;" />
+
+			<!-- Dashboard Section -->
+			<VBox spacing="8.0">
+				<Label text="MAIN"
+					style="-fx-text-fill: #95a5a6; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 10 0 5 0;" />
+				<Button fx:id="dashboardBtn" text="📊 Dashboard"
+					prefWidth="250.0"
+					style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="reportsBtn" text="📈 Reports and Analytics"
+					prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+			</VBox>
+
+			<!-- Management Section -->
+			<VBox spacing="8.0">
+				<Label text="MANAGEMENT"
+					style="-fx-text-fill: #95a5a6; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 15 0 5 0;" />
+				<Button fx:id="employeeManagementBtn"
+					text="👥 Employee Management" prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="projectManagementBtn"
+					text="🏗️ Project Management" prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="clientManagementBtn"
+					text="🤝 Client Management" prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="supplierManagementBtn"
+					text="🚚 Supplier Management" prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="materialManagementBtn"
+					text="📦 Material Management" prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="branchManagementBtn"
+					text="🏢 Branch Management" prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="roleManagementBtn" text="🎭 Role Management"
+					prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="departmentManagementBtn"
+					text="🏛️ Department Management" prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+			</VBox>
+
+			<!-- Additional Features -->
+			<VBox spacing="8.0">
+				<Label text="FEATURES"
+					style="-fx-text-fill: #95a5a6; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 15 0 5 0;" />
+				<Button fx:id="phaseManagementBtn" text="⏱️ Phase Management"
+					prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+				<Button fx:id="paymentManagementBtn"
+					text="💰 Payment Management" prefWidth="250.0"
+					style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 13px; -fx-padding: 12; -fx-background-radius: 6;" />
+			</VBox>
+		</VBox>
+	</left>
+
+	<center>
+		<!-- Main Content Area -->
+		<StackPane fx:id="contentArea"
+			style="-fx-background-color: #ecf0f1;">
+
+			<!-- Dashboard View -->
+			<VBox fx:id="dashboardView" spacing="20.0"
+				style="-fx-padding: 30;">
+				<Label text="Dashboard Overview"
+					style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+				<!-- Stats Cards -->
+				<HBox spacing="20.0" alignment="CENTER">
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+						prefWidth="200.0">
+						<Label text="Total Projects"
+							style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+						<Label fx:id="totalProjectsLabel" text="0"
+							style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #3498db;" />
+					</VBox>
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+						prefWidth="200.0">
+						<Label text="Total Employees"
+							style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+						<Label fx:id="totalEmployeesLabel" text="0"
+							style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" />
+					</VBox>
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+						prefWidth="200.0">
+						<Label text="Active Clients"
+							style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+						<Label fx:id="totalClientsLabel" text="0"
+							style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" />
+					</VBox>
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+						prefWidth="200.0">
+						<Label text="Total Revenue"
+							style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+						<Label fx:id="totalRevenueLabel" text="$0.00"
+							style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #f39c12;" />
+					</VBox>
+				</HBox>
+
+				<!-- Quick Actions -->
+				<VBox spacing="15.0"
+					style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+					<Label text="Quick Actions"
+						style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<HBox spacing="15.0" alignment="CENTER">
+						<Button text="Add New Project"
+							style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 15 25; -fx-background-radius: 8; -fx-font-size: 13px;" />
+						<Button text="Add New Employee"
+							style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 15 25; -fx-background-radius: 8; -fx-font-size: 13px;" />
+						<Button text="Add New Client"
+							style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 15 25; -fx-background-radius: 8; -fx-font-size: 13px;" />
+						<Button text="Generate Reports"
+							style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-padding: 15 25; -fx-background-radius: 8; -fx-font-size: 13px;" />
+					</HBox>
+				</VBox>
+			</VBox>
+
+			<!-- Employee Management View -->
+			<VBox fx:id="employeeManagementView" visible="false"
+				spacing="20.0" style="-fx-padding: 30;">
+				<HBox alignment="CENTER_LEFT" spacing="20.0">
+					<Label text="Employee Management"
+						style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<Button fx:id="addEmployeeBtn" text="+ Add Employee"
+						style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+					<Button fx:id="refreshEmployeesBtn" text="🔄 Refresh"
+						style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+				</HBox>
+
+				<HBox spacing="20.0">
+					<!-- Employee Form -->
+					<VBox spacing="15.0" prefWidth="350.0"
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Employee Details"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+						<VBox spacing="5.0">
+							<Label text="Date Range"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<HBox spacing="10.0">
+								<DatePicker fx:id="startDatePicker"
+									style="-fx-padding: 8; -fx-background-radius: 6;" />
+								<Label text="to"
+									style="-fx-text-fill: #7f8c8d; -fx-alignment: center;" />
+								<DatePicker fx:id="endDatePicker"
+									style="-fx-padding: 8; -fx-background-radius: 6;" />
+							</HBox>
+						</VBox>
+
+						<VBox spacing="10.0">
+							<Label text="Available Reports"
+								style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+							<Button fx:id="generateSalesReportBtn"
+								text="📊 Sales Report" prefWidth="300.0"
+								style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 12; -fx-background-radius: 6;" />
+							<Button fx:id="generateProfitabilityReportBtn"
+								text="💰 Profitability Report" prefWidth="300.0"
+								style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 12; -fx-background-radius: 6;" />
+							<Button fx:id="generateWorkloadReportBtn"
+								text="👥 Employee Workload Report" prefWidth="300.0"
+								style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 12; -fx-background-radius: 6;" />
+							<Button fx:id="generateMaterialReportBtn"
+								text="📦 Material Usage Report" prefWidth="300.0"
+								style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 12; -fx-background-radius: 6;" />
+							<Button fx:id="generateBranchReportBtn"
+								text="🏢 Branch Performance Report" prefWidth="300.0"
+								style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-padding: 12; -fx-background-radius: 6;" />
+							<Button fx:id="generateSupplierReportBtn"
+								text="🚚 Supplier Performance Report" prefWidth="300.0"
+								style="-fx-background-color: #1abc9c; -fx-text-fill: white; -fx-padding: 12; -fx-background-radius: 6;" />
+							<Button fx:id="generateTimelineReportBtn"
+								text="⏱️ Project Timeline Report" prefWidth="300.0"
+								style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-padding: 12; -fx-background-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label fx:id="totalSalesLabel" text="Total Sales: $0.00"
+								style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" />
+						</VBox>
+					</VBox>
+
+					<!-- Report Display -->
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Report Output"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+						<TextArea fx:id="reportTextArea" prefHeight="600.0"
+							prefWidth="700.0"
+							style="-fx-background-color: #f8f9fa; -fx-border-color: #e9ecef; -fx-border-radius: 6; -fx-font-family: 'Courier New'; -fx-font-size: 12px;" />
+					</VBox>
+				</HBox>
+			</VBox>
+
+			<!-- Material Management View -->
+			<VBox fx:id="materialManagementView" visible="false"
+				spacing="20.0" style="-fx-padding: 30;">
+				<HBox alignment="CENTER_LEFT" spacing="20.0">
+					<Label text="Material Management"
+						style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<Button fx:id="addMaterialBtn" text="+ Add Material"
+						style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+					<Button fx:id="refreshMaterialsBtn" text="🔄 Refresh"
+						style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+				</HBox>
+
+				<HBox spacing="20.0">
+					<!-- Material Form -->
+					<VBox spacing="15.0" prefWidth="350.0"
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Material Details"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+						<VBox spacing="5.0">
+							<Label text="Material ID"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="materialIdField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Material Name"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="materialNameField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Price"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="materialPriceField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<HBox spacing="10.0" alignment="CENTER">
+							<Button fx:id="saveMaterialBtn" text="Save"
+								style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="updateMaterialBtn" text="Update"
+								style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="deleteMaterialBtn" text="Delete"
+								style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+						</HBox>
+					</VBox>
+
+					<!-- Material Table -->
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Material List"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+						<TableView fx:id="materialTable" prefHeight="500.0"
+							prefWidth="700.0" style="-fx-background-color: transparent;">
+							<columns>
+								<TableColumn fx:id="materialIdColumn"
+									prefWidth="150.0" text="Material ID" />
+								<TableColumn fx:id="materialNameColumn"
+									prefWidth="300.0" text="Material Name" />
+								<TableColumn fx:id="materialPriceColumn"
+									prefWidth="150.0" text="Price" />
+							</columns>
+						</TableView>
+					</VBox>
+				</HBox>
+			</VBox>
+
+			<!-- Supplier Management View -->
+			<VBox fx:id="supplierManagementView" visible="false"
+				spacing="20.0" style="-fx-padding: 30;">
+				<HBox alignment="CENTER_LEFT" spacing="20.0">
+					<Label text="Supplier Management"
+						style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<Button fx:id="addSupplierBtn" text="+ Add Supplier"
+						style="-fx-background-color: #1abc9c; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+					<Button fx:id="refreshSuppliersBtn" text="🔄 Refresh"
+						style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+				</HBox>
+
+				<HBox spacing="20.0">
+					<!-- Supplier Form -->
+					<VBox spacing="15.0" prefWidth="350.0"
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Supplier Details"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+						<VBox spacing="5.0">
+							<Label text="Supplier ID"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="supplierIdField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Supplier Name"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="supplierNameField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Location"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="supplierLocationField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<HBox spacing="10.0" alignment="CENTER">
+							<Button fx:id="saveSupplierBtn" text="Save"
+								style="-fx-background-color: #1abc9c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="updateSupplierBtn" text="Update"
+								style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="deleteSupplierBtn" text="Delete"
+								style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+						</HBox>
+					</VBox>
+
+					<!-- Supplier Table -->
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Supplier List"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+						<TableView fx:id="supplierTable" prefHeight="500.0"
+							prefWidth="700.0" style="-fx-background-color: transparent;">
+							<columns>
+								<TableColumn fx:id="supplierIdColumn"
+									prefWidth="120.0" text="Supplier ID" />
+								<TableColumn fx:id="supplierNameColumn"
+									prefWidth="250.0" text="Supplier Name" />
+								<TableColumn fx:id="supplierLocationColumn"
+									prefWidth="200.0" text="Location" />
+							</columns>
+						</TableView>
+					</VBox>
+				</HBox>
+			</VBox>
+
+			<!-- Branch Management View -->
+			<VBox fx:id="branchManagementView" visible="false"
+				spacing="20.0" style="-fx-padding: 30;">
+				<HBox alignment="CENTER_LEFT" spacing="20.0">
+					<Label text="Branch Management"
+						style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<Button fx:id="addBranchBtn" text="+ Add Branch"
+						style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+					<Button fx:id="refreshBranchesBtn" text="🔄 Refresh"
+						style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+				</HBox>
+
+				<HBox spacing="20.0">
+					<!-- Branch Form -->
+					<VBox spacing="15.0" prefWidth="350.0"
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Branch Details"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+						<VBox spacing="5.0">
+							<Label text="Branch ID"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="branchIdField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Location"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="branchLocationField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<HBox spacing="10.0" alignment="CENTER">
+							<Button fx:id="saveBranchBtn" text="Save"
+								style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="updateBranchBtn" text="Update"
+								style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="deleteBranchBtn" text="Delete"
+								style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+						</HBox>
+					</VBox>
+
+					<!-- Branch Table -->
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Branch List"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+						<TableView fx:id="branchTable" prefHeight="500.0"
+							prefWidth="700.0" style="-fx-background-color: transparent;">
+							<columns>
+								<TableColumn fx:id="branchIdColumn"
+									prefWidth="200.0" text="Branch ID" />
+								<TableColumn fx:id="branchLocationColumn"
+									prefWidth="400.0" text="Location" />
+							</columns>
+						</TableView>
+					</VBox>
+				</HBox>
+			</VBox>
+
+			<!-- Role Management View -->
+			<VBox fx:id="roleManagementView" visible="false" spacing="20.0"
+				style="-fx-padding: 30;">
+				<HBox alignment="CENTER_LEFT" spacing="20.0">
+					<Label text="Role Management"
+						style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<Button fx:id="addRoleBtn" text="+ Add Role"
+						style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+					<Button fx:id="refreshRolesBtn" text="🔄 Refresh"
+						style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+				</HBox>
+
+				<HBox spacing="20.0">
+					<!-- Role Form -->
+					<VBox spacing="15.0" prefWidth="350.0"
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Role Details"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+						<VBox spacing="5.0">
+							<Label text="Role ID"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="roleIdField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Title"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="roleTitleField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<HBox spacing="10.0" alignment="CENTER">
+							<Button fx:id="saveRoleBtn" text="Save"
+								style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="updateRoleBtn" text="Update"
+								style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="deleteRoleBtn" text="Delete"
+								style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+						</HBox>
+					</VBox>
+
+					<!-- Role Table -->
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Role List"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+						<TableView fx:id="roleTable" prefHeight="500.0"
+							prefWidth="700.0" style="-fx-background-color: transparent;">
+							<columns>
+								<TableColumn fx:id="roleIdColumn" prefWidth="200.0"
+									text="Role ID" />
+								<TableColumn fx:id="roleTitleColumn"
+									prefWidth="400.0" text="Title" />
+							</columns>
+						</TableView>
+					</VBox>
+				</HBox>
+			</VBox>
+
+			<!-- Department Management View -->
+			<VBox fx:id="departmentManagementView" visible="false"
+				spacing="20.0" style="-fx-padding: 30;">
+				<HBox alignment="CENTER_LEFT" spacing="20.0">
+					<Label text="Department Management"
+						style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<Button fx:id="addDepartmentBtn" text="+ Add Department"
+						style="-fx-background-color: #16a085; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+					<Button fx:id="refreshDepartmentsBtn" text="🔄 Refresh"
+						style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+				</HBox>
+
+				<HBox spacing="20.0">
+					<!-- Department Form -->
+					<VBox spacing="15.0" prefWidth="350.0"
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Department Details"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+						<VBox spacing="5.0">
+							<Label text="Department ID"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="departmentIdField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Department Name"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="departmentNameField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<HBox spacing="10.0" alignment="CENTER">
+							<Button fx:id="saveDepartmentBtn" text="Save"
+								style="-fx-background-color: #16a085; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="updateDepartmentBtn" text="Update"
+								style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="deleteDepartmentBtn" text="Delete"
+								style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+						</HBox>
+					</VBox>
+
+					<!-- Department Table -->
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Department List"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+						<TableView fx:id="departmentTable" prefHeight="500.0"
+							prefWidth="700.0" style="-fx-background-color: transparent;">
+							<columns>
+								<TableColumn fx:id="departmentIdColumn"
+									prefWidth="200.0" text="Department ID" />
+								<TableColumn fx:id="departmentNameColumn"
+									prefWidth="400.0" text="Department Name" />
+							</columns>
+						</TableView>
+					</VBox>
+				</HBox>
+			</VBox>
+
+			<!-- Phase Management View -->
+			<VBox fx:id="phaseManagementView" visible="false" spacing="20.0"
+				style="-fx-padding: 30;">
+				<HBox alignment="CENTER_LEFT" spacing="20.0">
+					<Label text="Phase Management"
+						style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<Button fx:id="addPhaseBtn" text="+ Add Phase"
+						style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+					<Button fx:id="refreshPhasesBtn" text="🔄 Refresh"
+						style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+				</HBox>
+
+				<HBox spacing="20.0">
+					<!-- Phase Form -->
+					<VBox spacing="15.0" prefWidth="350.0"
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Phase Details"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+						<VBox spacing="5.0">
+							<Label text="Phase ID"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="phaseIdField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Project"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<ComboBox fx:id="phaseProjectComboBox" prefWidth="300.0"
+								style="-fx-padding: 8; -fx-background-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Phase Name"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="phaseNameField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Description"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextArea fx:id="phaseDescriptionField" prefRowCount="3"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Start Date"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<DatePicker fx:id="phaseStartDatePicker"
+								style="-fx-padding: 8; -fx-background-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="End Date"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<DatePicker fx:id="phaseEndDatePicker"
+								style="-fx-padding: 8; -fx-background-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Status"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<ComboBox fx:id="phaseStatusComboBox" prefWidth="300.0"
+								style="-fx-padding: 8; -fx-background-radius: 6;" />
+						</VBox>
+
+						<HBox spacing="10.0" alignment="CENTER">
+							<Button fx:id="savePhaseBtn" text="Save"
+								style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="updatePhaseBtn" text="Update"
+								style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="deletePhaseBtn" text="Delete"
+								style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+						</HBox>
+					</VBox>
+
+					<!-- Phase Table -->
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Phase List"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+						<TableView fx:id="phaseTable" prefHeight="500.0"
+							prefWidth="700.0" style="-fx-background-color: transparent;">
+							<columns>
+								<TableColumn fx:id="phaseIdColumn" prefWidth="80.0"
+									text="ID" />
+								<TableColumn fx:id="phaseProjectColumn"
+									prefWidth="100.0" text="Project" />
+								<TableColumn fx:id="phaseNameColumn"
+									prefWidth="150.0" text="Name" />
+								<TableColumn fx:id="phaseStartDateColumn"
+									prefWidth="120.0" text="Start Date" />
+								<TableColumn fx:id="phaseEndDateColumn"
+									prefWidth="120.0" text="End Date" />
+								<TableColumn fx:id="phaseStatusColumn"
+									prefWidth="100.0" text="Status" />
+							</columns>
+						</TableView>
+					</VBox>
+				</HBox>
+			</VBox>
+
+			<!-- Payment Management View -->
+			<VBox fx:id="paymentManagementView" visible="false"
+				spacing="20.0" style="-fx-padding: 30;">
+				<HBox alignment="CENTER_LEFT" spacing="20.0">
+					<Label text="Payment Management"
+						style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+					<Button fx:id="addPaymentBtn" text="+ Add Payment"
+						style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+					<Button fx:id="refreshPaymentsBtn" text="🔄 Refresh"
+						style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+				</HBox>
+
+				<HBox spacing="20.0">
+					<!-- Payment Form -->
+					<VBox spacing="15.0" prefWidth="350.0"
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Payment Details"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+						<VBox spacing="5.0">
+							<Label text="Payment ID"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="paymentIdField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="From Client"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<ComboBox fx:id="paymentClientComboBox"
+								prefWidth="300.0"
+								style="-fx-padding: 8; -fx-background-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="To Supplier"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<ComboBox fx:id="paymentSupplierComboBox"
+								prefWidth="300.0"
+								style="-fx-padding: 8; -fx-background-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Amount"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<TextField fx:id="paymentAmountField"
+								style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Payment Date"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<DatePicker fx:id="paymentDatePicker"
+								style="-fx-padding: 8; -fx-background-radius: 6;" />
+						</VBox>
+
+						<VBox spacing="5.0">
+							<Label text="Payment Method"
+								style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+							<ComboBox fx:id="paymentMethodComboBox"
+								prefWidth="300.0"
+								style="-fx-padding: 8; -fx-background-radius: 6;" />
+						</VBox>
+
+						<HBox spacing="10.0" alignment="CENTER">
+							<Button fx:id="savePaymentBtn" text="Save"
+								style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="updatePaymentBtn" text="Update"
+								style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+							<Button fx:id="deletePaymentBtn" text="Delete"
+								style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+						</HBox>
+					</VBox>
+
+					<!-- Payment Table -->
+					<VBox
+						style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+						<Label text="Payment List"
+							style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+						<TableView fx:id="paymentTable" prefHeight="500.0"
+							prefWidth="700.0" style="-fx-background-color: transparent;">
+							<columns>
+								<TableColumn fx:id="paymentIdColumn"
+									prefWidth="80.0" text="ID" />
+								<TableColumn fx:id="paymentClientColumn"
+									prefWidth="120.0" text="From Client" />
+								<TableColumn fx:id="paymentSupplierColumn"
+									prefWidth="120.0" text="To Supplier" />
+								<TableColumn fx:id="paymentAmountColumn"
+									prefWidth="100.0" text="Amount" />
+								<TableColumn fx:id="paymentDateColumn"
+									prefWidth="120.0" text="Date" />
+								<TableColumn fx:id="paymentMethodColumn"
+									prefWidth="120.0" text="Method" />
+							</columns>
+						</TableView>
+					</VBox>
+				</HBox>
+			</VBox>
+
+		</StackPane>
+	</center>
+
+	<bottom>
+		<!-- Status Bar -->
+		<HBox style="-fx-background-color: #34495e; -fx-padding: 10 20;"
+			alignment="CENTER_LEFT" spacing="20.0">
+			<Label fx:id="statusLabel" text="Ready"
+				style="-fx-text-fill: #ecf0f1; -fx-font-size: 12px;" />
+			<HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+				<Label fx:id="currentTimeLabel" text=""
+					style="-fx-text-fill: #bdc3c7; -fx-font-size: 12px;" />
+			</HBox>
+		</HBox>
+	</bottom>
+</BorderPane>
+<Label text="Employee ID"
+	style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+<TextField fx:id="empIdField"
+	style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+</VBox>
+
+<VBox spacing="5.0">
+	<Label text="Employee Name"
+		style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+	<TextField fx:id="empNameField"
+		style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+</VBox>
+
+<VBox spacing="5.0">
+	<Label text="Position"
+		style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+	<ComboBox fx:id="positionComboBox" prefWidth="300.0"
+		style="-fx-padding: 8; -fx-background-radius: 6;" />
+</VBox>
+
+<VBox spacing="5.0">
+	<Label text="Salary"
+		style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+	<TextField fx:id="salaryField"
+		style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+</VBox>
+
+<VBox spacing="5.0">
+	<Label text="Branch"
+		style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+	<ComboBox fx:id="empBranchComboBox" prefWidth="300.0"
+		style="-fx-padding: 8; -fx-background-radius: 6;" />
+</VBox>
+
+<VBox spacing="5.0">
+	<Label text="Department"
+		style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+	<ComboBox fx:id="empDepartmentComboBox" prefWidth="300.0"
+		style="-fx-padding: 8; -fx-background-radius: 6;" />
+</VBox>
+
+<VBox spacing="5.0">
+	<Label text="Manager"
+		style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+	<ComboBox fx:id="managerComboBox" prefWidth="300.0"
+		style="-fx-padding: 8; -fx-background-radius: 6;" />
+</VBox>
+
+<CheckBox fx:id="isManagerCheckBox" text="Is Manager"
+	style="-fx-text-fill: #2c3e50; -fx-font-size: 12px;" />
+
+<HBox spacing="10.0" alignment="CENTER">
+	<Button fx:id="saveEmployeeBtn" text="Save"
+		style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+	<Button fx:id="updateEmployeeBtn" text="Update"
+		style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+	<Button fx:id="deleteEmployeeBtn" text="Delete"
+		style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+</HBox>
+</VBox>
+
+<!-- Employee Table -->
+<VBox
+	style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+	<Label text="Employee List"
+		style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+	<TableView fx:id="employeeTable" prefHeight="500.0"
+		prefWidth="700.0" style="-fx-background-color: transparent;">
+		<columns>
+			<TableColumn fx:id="empIdColumn" prefWidth="80.0"
+				text="ID" />
+			<TableColumn fx:id="empNameColumn" prefWidth="150.0"
+				text="Name" />
+			<TableColumn fx:id="empPositionColumn" prefWidth="120.0"
+				text="Position" />
+			<TableColumn fx:id="empSalaryColumn" prefWidth="100.0"
+				text="Salary" />
+			<TableColumn fx:id="empBranchColumn" prefWidth="100.0"
+				text="Branch" />
+			<TableColumn fx:id="empDepartmentColumn"
+				prefWidth="120.0" text="Department" />
+			<TableColumn fx:id="empManagerColumn" prefWidth="100.0"
+				text="Manager" />
+		</columns>
+	</TableView>
+</VBox>
+</HBox>
+</VBox>
+
+<!-- Project Management View -->
+<VBox fx:id="projectManagementView" visible="false" spacing="20.0"
+	style="-fx-padding: 30;">
+	<HBox alignment="CENTER_LEFT" spacing="20.0">
+		<Label text="Project Management"
+			style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+		<Button fx:id="addProjectBtn" text="+ Add Project"
+			style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+		<Button fx:id="refreshProjectsBtn" text="🔄 Refresh"
+			style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+	</HBox>
+
+	<HBox spacing="20.0">
+		<!-- Project Form -->
+		<VBox spacing="15.0" prefWidth="350.0"
+			style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+			<Label text="Project Details"
+				style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+			<VBox spacing="5.0">
+				<Label text="Project ID"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<TextField fx:id="projectIdField"
+					style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+			</VBox>
+
+			<VBox spacing="5.0">
+				<Label text="Project Name"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<TextField fx:id="projectNameField"
+					style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+			</VBox>
+
+			<VBox spacing="5.0">
+				<Label text="Location"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<TextField fx:id="projectLocationField"
+					style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+			</VBox>
+
+			<VBox spacing="5.0">
+				<Label text="Cost"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<TextField fx:id="costField"
+					style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+			</VBox>
+
+			<VBox spacing="5.0">
+				<Label text="Revenue"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<TextField fx:id="revenueField"
+					style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+			</VBox>
+
+			<VBox spacing="5.0">
+				<Label text="Branch"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<ComboBox fx:id="projectBranchComboBox" prefWidth="300.0"
+					style="-fx-padding: 8; -fx-background-radius: 6;" />
+			</VBox>
+
+			<VBox spacing="5.0">
+				<Label text="Client"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<ComboBox fx:id="projectClientComboBox" prefWidth="300.0"
+					style="-fx-padding: 8; -fx-background-radius: 6;" />
+			</VBox>
+
+			<HBox spacing="10.0" alignment="CENTER">
+				<Button fx:id="saveProjectBtn" text="Save"
+					style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+				<Button fx:id="updateProjectBtn" text="Update"
+					style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+				<Button fx:id="deleteProjectBtn" text="Delete"
+					style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+			</HBox>
+		</VBox>
+
+		<!-- Project Table -->
+		<VBox
+			style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+			<Label text="Project List"
+				style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+			<TableView fx:id="projectTable" prefHeight="500.0"
+				prefWidth="700.0" style="-fx-background-color: transparent;">
+				<columns>
+					<TableColumn fx:id="projectIdColumn" prefWidth="80.0"
+						text="ID" />
+					<TableColumn fx:id="projectNameColumn"
+						prefWidth="200.0" text="Name" />
+					<TableColumn fx:id="projectLocationColumn"
+						prefWidth="120.0" text="Location" />
+					<TableColumn fx:id="projectCostColumn"
+						prefWidth="100.0" text="Cost" />
+					<TableColumn fx:id="projectRevenueColumn"
+						prefWidth="100.0" text="Revenue" />
+					<TableColumn fx:id="projectBranchColumn"
+						prefWidth="100.0" text="Branch" />
+				</columns>
+			</TableView>
+		</VBox>
+	</HBox>
+</VBox>
+
+<!-- Client Management View -->
+<VBox fx:id="clientManagementView" visible="false" spacing="20.0"
+	style="-fx-padding: 30;">
+	<HBox alignment="CENTER_LEFT" spacing="20.0">
+		<Label text="Client Management"
+			style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+		<Button fx:id="addClientBtn" text="+ Add Client"
+			style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+		<Button fx:id="refreshClientsBtn" text="🔄 Refresh"
+			style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6; -fx-font-size: 12px;" />
+	</HBox>
+
+	<HBox spacing="20.0">
+		<!-- Client Form -->
+		<VBox spacing="15.0" prefWidth="350.0"
+			style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+			<Label text="Client Details"
+				style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+			<VBox spacing="5.0">
+				<Label text="Client ID"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<TextField fx:id="clientIdField"
+					style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+			</VBox>
+
+			<VBox spacing="5.0">
+				<Label text="Client Name"
+					style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" />
+				<TextField fx:id="clientNameField"
+					style="-fx-padding: 12; -fx-background-radius: 6; -fx-border-color: #bdc3c7; -fx-border-radius: 6;" />
+			</VBox>
+
+			<HBox spacing="10.0" alignment="CENTER">
+				<Button fx:id="saveClientBtn" text="Save"
+					style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+				<Button fx:id="updateClientBtn" text="Update"
+					style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+				<Button fx:id="deleteClientBtn" text="Delete"
+					style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 6;" />
+			</HBox>
+		</VBox>
+
+		<!-- Client Table -->
+		<VBox
+			style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+			<Label text="Client List"
+				style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 15 0;" />
+			<TableView fx:id="clientTable" prefHeight="500.0"
+				prefWidth="700.0" style="-fx-background-color: transparent;">
+				<columns>
+					<TableColumn fx:id="clientIdColumn" prefWidth="150.0"
+						text="Client ID" />
+					<TableColumn fx:id="clientNameColumn" prefWidth="400.0"
+						text="Client Name" />
+				</columns>
+			</TableView>
+		</VBox>
+	</HBox>
+</VBox>
+
+<!-- Reports View -->
+<VBox fx:id="reportsView" visible="false" spacing="20.0"
+	style="-fx-padding: 30;">
+	<Label text="Reports & Analytics"
+		style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+	<HBox spacing="20.0">
+		<!-- Report Controls -->
+		<VBox spacing="15.0" prefWidth="350.0"
+			style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+			<Label text="Generate Reports"
+				style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+			<VBox spacing="5.0">
